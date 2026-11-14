@@ -24,6 +24,11 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   useEffect(() => {
+    // If opened directly without a specific section hash, ensure page starts at the top (Home)
+    if (typeof window !== "undefined" && !window.location.hash) {
+      window.scrollTo(0, 0);
+    }
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 

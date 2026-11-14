@@ -218,11 +218,20 @@ export default function SkillsSection({ categories }: SkillsSectionProps) {
   const prev = () => switchTo((activeIdx - 1 + total) % total, "left");
   const next = () => switchTo((activeIdx + 1) % total, "right");
 
-  /* scroll active tab into view */
+  /* scroll active tab horizontally inside its own nav container only (prevent window jump) */
+  const isInitialMount = useRef(true);
   useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
     if (!navRef.current) return;
-    const btn = navRef.current.children[activeIdx] as HTMLElement;
-    if (btn) btn.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    const container = navRef.current;
+    const btn = container.children[activeIdx] as HTMLElement;
+    if (btn) {
+      const left = btn.offsetLeft - container.offsetWidth / 2 + btn.offsetWidth / 2;
+      container.scrollTo({ left, behavior: "smooth" });
+    }
   }, [activeIdx]);
 
   return (
