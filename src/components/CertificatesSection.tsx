@@ -1,169 +1,192 @@
 "use client";
 
-import React, { useState } from "react";
-import { ExternalLink, Eye, ShieldCheck, Calendar, Sparkles } from "lucide-react";
+import React, { useState, useMemo } from "react";
+import { Eye, ExternalLink } from "lucide-react";
 import { Certificate } from "@/types/portfolio";
-import CertificateModal from "./CertificateModal";
+import TeamLanyardRail, { LanyardMember, LanyardLink } from "@/components/ui/team-lanyard-rail";
+import CertificateViewerModal from "@/components/CertificateViewerModal";
+import WordReveal from "./animations/WordReveal";
+import ScrollReveal from "./animations/ScrollReveal";
 
 interface CertificatesSectionProps {
   certificates: Certificate[];
 }
 
-export default function CertificatesSection({ certificates }: CertificatesSectionProps) {
+export default function CertificatesSection({
+  certificates = [],
+}: CertificatesSectionProps) {
   const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>("All");
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
 
   const categories = [
     "All",
+    "Cloud & AI Skill Badges",
     "Industry Job Simulations",
     "University Accreditations",
-    "Cloud & AI Skill Badges",
   ];
 
-  const filteredCertificates =
-    activeCategory === "All"
-      ? certificates
-      : certificates.filter((cert) => cert.category === activeCategory);
+  // Filter certificates by active category
+  const filteredCertificates = useMemo(() => {
+    if (activeCategory === "All") return certificates;
+    return certificates.filter((cert) => cert.category === activeCategory);
+  }, [certificates, activeCategory]);
+
+  // Map existing certificate data to LanyardMember format
+  const lanyardItems: LanyardMember[] = useMemo(() => {
+    return filteredCertificates.map((cert, index) => {
+      const tone = (((index % 5) + 1) as 1 | 2 | 3 | 4 | 5);
+      
+      const links: LanyardLink[] = [];
+      if (cert.verificationUrl && cert.verificationUrl !== "#") {
+        links.push({ label: "Verify Online", href: cert.verificationUrl });
+      }
+      if (cert.pdfUrl || cert.imageUrl) {
+        links.push({ label: "View Original", href: cert.pdfUrl || cert.imageUrl || "#" });
+      }
+
+      const bioText = cert.skillsLearned && cert.skillsLearned.length > 0
+        ? `Demonstrated Competencies: ${cert.skillsLearned.join(" • ")}`
+        : (cert.credentialId ? `Credential ID: ${cert.credentialId}` : cert.title);
+
+      return {
+        id: cert.id,
+        name: cert.title,
+        role: cert.issuingOrganization,
+        team: cert.issueDate ? `${cert.issueDate} · ${cert.category || "Verified"}` : cert.category,
+        image: cert.imageUrl || cert.pdfUrl || "",
+        pdfUrl: cert.pdfUrl,
+        bio: bioText,
+        tags: cert.skillsLearned && cert.skillsLearned.length > 0
+          ? cert.skillsLearned.slice(0, 3)
+          : [cert.category || "Verified"],
+        links: links.length > 0 ? links : [{ label: "Verified Record", href: "#" }],
+        tone,
+        drop: [6, 18, 2, 14, 20, 4, 16, 8][index % 8],
+      };
+    });
+  }, [filteredCertificates]);
+
+  // Currently focused / flipped certificate
+  const focusedIndex = activeIndex !== null ? activeIndex : flippedIndex;
+  const currentCert = focusedIndex !== null && filteredCertificates[focusedIndex]
+    ? filteredCertificates[focusedIndex]
+    : filteredCertificates[0] || null;
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setActiveIndex(0);
+    setFlippedIndex(null);
+  };
 
   return (
-    <section id="certificates" className="py-24 bg-graphite border-t border-cloud-border relative">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+    <section
+      id="certificates"
+      className="relative w-full bg-graphite border-t border-cloud-border py-20 sm:py-24 scroll-mt-24 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-          <div>
-            <div className="flex items-center gap-2 text-sunshine text-xs font-semibold tracking-widest uppercase mb-3">
+        <ScrollReveal yOffset={20} blurAmount={6}>
+          <div className="w-full max-w-4xl mx-auto text-center mb-8">
+            <div className="flex items-center justify-center gap-2 text-sunshine text-xs font-semibold tracking-widest uppercase mb-3">
               <span className="w-8 h-[1px] bg-sunshine" />
               <span>Section 04</span>
+              <span className="w-8 h-[1px] bg-sunshine" />
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-cloud font-normal">
-              Certifications & <span className="italic font-medium text-sunshine">Credentials</span>
-            </h2>
-          </div>
-          <p className="text-cloud-muted text-sm max-w-md">
-            Industry job simulations, verified university accreditations, cloud infrastructure badges, and technical certifications.
-          </p>
-        </div>
 
-        {/* Category Filter Tabs */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              type="button"
-              onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all ${
-                activeCategory === cat
-                  ? "bg-sunshine text-graphite font-semibold shadow-gold-sm"
-                  : "bg-graphite-100 text-cloud-muted hover:text-cloud border border-cloud-border hover:border-sunshine/40"
-              }`}
-            >
-              {cat === "All" ? "All Credentials" : cat}
-            </button>
-          ))}
-        </div>
+            <WordReveal
+              as="h2"
+              text="Certifications & Credentials"
+              highlightWords={["Credentials"]}
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl text-cloud font-normal"
+              stagger={0.08}
+            />
 
-        {/* Certificates Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCertificates.map((cert) => (
-            <div
-              key={cert.id}
-              className="bg-graphite-100/50 border border-cloud-border rounded-2xl p-6 flex flex-col justify-between hover:border-sunshine/40 transition-all duration-300 group hover:shadow-lg hover:shadow-black/40"
-            >
-              <div>
-                {/* Top Badge & Date */}
-                <div className="flex items-center justify-between gap-2 mb-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-graphite border border-cloud-border text-[11px] font-medium text-sunshine">
-                    <ShieldCheck className="w-3.5 h-3.5" />
-                    {cert.category ? cert.category.split(" ")[0] : "Verified"}
-                  </span>
-                  <span className="text-xs text-cloud-subtle font-mono flex items-center gap-1">
-                    <Calendar className="w-3 h-3" />
-                    {cert.issueDate}
-                  </span>
-                </div>
+            <p className="text-cloud-muted text-xs sm:text-sm mt-3 max-w-2xl mx-auto leading-relaxed">
+              Verified certifications, technical specializations, and official credentials across software engineering and system architecture.
+            </p>
 
-                {/* Certificate Title */}
-                <h3 className="font-serif text-xl text-cloud mb-2 group-hover:text-sunshine transition-colors">
-                  {cert.title}
-                </h3>
-
-                {/* Organization */}
-                <p className="text-sm font-medium text-cloud-muted mb-4">
-                  {cert.issuingOrganization}
-                </p>
-
-                {/* Credential ID */}
-                {cert.credentialId && (
-                  <p className="text-xs font-mono text-cloud-subtle mb-4">
-                    ID: {cert.credentialId}
-                  </p>
-                )}
-
-                {/* Skills tags */}
-                {cert.skillsLearned && cert.skillsLearned.length > 0 && (
-                  <div className="flex flex-wrap gap-1.5 mb-6">
-                    {cert.skillsLearned.map((skill, idx) => (
-                      <span
-                        key={idx}
-                        className="px-2.5 py-1 rounded-md bg-graphite border border-cloud-border text-[11px] text-cloud-muted"
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Action Buttons */}
-              <div className="pt-4 border-t border-cloud-border/70 flex items-center justify-between gap-3">
+            {/* Category Filter Pills */}
+            <div className="flex items-center justify-center gap-1.5 sm:gap-2 overflow-x-auto pt-5 pb-2 scrollbar-none">
+              {categories.map((cat) => (
                 <button
+                  key={cat}
                   type="button"
-                  onClick={() => setSelectedCertificate(cert)}
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-graphite border border-cloud-border text-xs font-semibold text-cloud hover:text-sunshine hover:border-sunshine/50 transition-all"
+                  onClick={() => handleCategoryChange(cat)}
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all cursor-pointer ${
+                    activeCategory === cat
+                      ? "bg-sunshine text-white font-semibold shadow-gold-sm"
+                      : "bg-graphite-100 text-cloud-muted hover:text-cloud border border-cloud-border hover:border-sunshine/40"
+                  }`}
                 >
-                  <Eye className="w-3.5 h-3.5 text-sunshine" />
-                  <span>Preview</span>
+                  {cat === "All" ? "All Credentials" : cat}
                 </button>
-
-                {cert.verificationUrl && (
-                  <a
-                    href={cert.verificationUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-xs text-cloud-muted hover:text-sunshine font-semibold transition-colors"
-                  >
-                    <span>Verify Credential</span>
-                    <ExternalLink className="w-3 h-3 text-sunshine" />
-                  </a>
-                )}
-              </div>
-
-              {/* Placeholder Notice */}
-              {cert.isPlaceholder && (
-                <div className="mt-3 text-[11px] text-cloud-subtle italic flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-sunshine/60 shrink-0" />
-                  <span>Awaiting your certificate uploads in Phase 4.</span>
-                </div>
-              )}
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        </ScrollReveal>
 
-        {/* Verification Note */}
-        <div className="mt-12 p-4 rounded-xl bg-graphite-900 border border-cloud-border text-center">
-          <p className="text-xs text-cloud-muted">
-            <span className="text-sunshine font-semibold uppercase tracking-wider">Authenticity Guaranteed:</span> All technical certifications and simulation badges can be directly verified via provider IDs and authenticated links.
-          </p>
-        </div>
+        {/* Lanyard Rail Interactive Viewport */}
+        <ScrollReveal delay={0.15} yOffset={30} blurAmount={8}>
+          <div className="relative w-full rounded-2xl bg-white border border-cloud-border shadow-gold-sm overflow-hidden py-4">
+            <TeamLanyardRail
+              items={lanyardItems}
+              active={activeIndex}
+              onActiveChange={setActiveIndex}
+              flipped={flippedIndex}
+              onFlippedChange={setFlippedIndex}
+              autoplay={false}
+              className="bg-transparent"
+              caption="Hover or swipe along the rail to meet each credential, pull down to test spring physics, click to flip."
+              action={
+                currentCert ? (
+                  <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedCertificate(currentCert)}
+                      className="inline-flex items-center gap-2 rounded-full bg-sunshine px-5 py-2 text-xs font-semibold text-white shadow-gold-sm outline-none transition-all hover:bg-sunshine-hover hover:-translate-y-0.5 cursor-pointer"
+                    >
+                      <Eye className="w-3.5 h-3.5" />
+                      <span>Inspect Full Certificate</span>
+                    </button>
+
+                    {currentCert.verificationUrl && currentCert.verificationUrl !== "#" && (
+                      <a
+                        href={currentCert.verificationUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 rounded-full border border-cloud-border bg-graphite-100 px-4 py-2 text-xs font-medium text-cloud hover:border-sunshine/40 hover:text-sunshine transition-all"
+                      >
+                        <span>Verify Online</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    )}
+                  </div>
+                ) : null
+              }
+            />
+          </div>
+        </ScrollReveal>
 
       </div>
 
-      {/* Certificate Modal */}
-      <CertificateModal
-        certificate={selectedCertificate}
-        onClose={() => setSelectedCertificate(null)}
-      />
+      {/* Certificate Viewer Lightbox Modal with Zoom & Download */}
+      {selectedCertificate && (
+        <CertificateViewerModal
+          isOpen={!!selectedCertificate}
+          onClose={() => setSelectedCertificate(null)}
+          title={selectedCertificate.title}
+          organization={selectedCertificate.issuingOrganization}
+          certificateUrl={
+            selectedCertificate.imageUrl || selectedCertificate.pdfUrl
+          }
+          certificateType={selectedCertificate.imageUrl ? "image" : "pdf"}
+          verificationUrl={selectedCertificate.verificationUrl}
+          dateOrYear={selectedCertificate.issueDate}
+        />
+      )}
     </section>
   );
 }

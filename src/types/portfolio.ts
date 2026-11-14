@@ -3,7 +3,7 @@ export interface Project {
   title: string;
   tagline: string;
   category: string;
-  group?: string;
+  group: "Personal Projects" | "Hackathon Projects";
   status?: string;
   overview: string;
   problemStatement: string;
@@ -38,8 +38,11 @@ export interface Achievement {
   recognitionOrPosition: string;
   dateOrYear: string;
   description: string;
-  category?: string;
+  category: "Hackathon Achievements" | "Personal Achievements & Certifications";
   badge?: string;
+  certificateUrl?: string;
+  certificateType?: "image" | "pdf";
+  previewImageUrl?: string;
   supportingUrl?: string;
   isPlaceholder?: boolean;
 }

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="grad_hack_iiitd_preview_svg" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#24262A" />
+      <stop offset="60%" stop-color="#1C2430" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0E0F10" />
+    </radialGradient>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD966" />
+      <stop offset="50%" stop-color="#FFC928" />
+      <stop offset="100%" stop-color="#B8860B" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" rx="16" fill="url(#grad_hack_iiitd_preview_svg)" />
+  
+  <!-- Outer Gold Border -->
+  <rect x="24" y="24" width="752" height="552" rx="12" fill="none" stroke="url(#gold)" stroke-width="3" />
+  <rect x="36" y="36" width="728" height="528" rx="8" fill="none" stroke="#F2F4F1" stroke-width="1" opacity="0.2" />
+
+  <!-- Corner Ornaments -->
+  <path d="M24 64 L64 24 M24 76 L76 24" stroke="url(#gold)" stroke-width="2" />
+  <path d="M776 64 L736 24 M776 76 L724 24" stroke="url(#gold)" stroke-width="2" />
+  <path d="M24 536 L64 576 M24 524 L76 576" stroke="url(#gold)" stroke-width="2" />
+  <path d="M776 536 L736 576 M776 524 L724 576" stroke="url(#gold)" stroke-width="2" />
+
+  <!-- Organization Header -->
+  <text x="400" y="90" font-family="sans-serif" font-size="14" font-weight="700" fill="#FFC928" letter-spacing="4" text-anchor="middle">IIIT DELHI</text>
+  <text x="400" y="130" font-family="Playfair Display, Georgia, serif" font-size="28" font-weight="700" fill="#F2F4F1" text-anchor="middle">CERTIFICATE OF RECOGNITION</text>
+  
+  <line x1="280" y1="150" x2="520" y2="150" stroke="url(#gold)" stroke-width="1.5" />
+
+  <!-- Presentation line -->
+  <text x="400" y="195" font-family="sans-serif" font-size="13" font-style="italic" fill="#B8BCB6" text-anchor="middle">This is proudly presented to</text>
+  <text x="400" y="245" font-family="Playfair Display, Georgia, serif" font-size="34" font-weight="700" fill="#FFC928" text-anchor="middle">MAHEEN FATIMA</text>
+
+  <!-- Event Title -->
+  <text x="400" y="300" font-family="sans-serif" font-size="18" font-weight="600" fill="#FFFFFF" text-anchor="middle">HackIIITD – ESYA 2026</text>
+  <text x="400" y="335" font-family="sans-serif" font-size="13" fill="#B8BCB6" text-anchor="middle">Premier Collegiate Technical Hackathon</text>
+
+  <!-- Recognition Badge Pill -->
+  <rect x="250" y="365" width="300" height="34" rx="17" fill="#1C1D20" stroke="url(#gold)" stroke-width="1.5" />
+  <text x="400" y="387" font-family="monospace" font-size="12" font-weight="700" fill="#FFC928" text-anchor="middle">Collegiate Hackathon Finalist</text>
+
+  <!-- Gold Seal -->
+  <circle cx="670" cy="470" r="42" fill="#1C1D20" stroke="url(#gold)" stroke-width="2.5" />
+  <circle cx="670" cy="470" r="34" fill="none" stroke="#FFC928" stroke-width="1" stroke-dasharray="4 3" />
+  <text x="670" y="468" font-family="sans-serif" font-size="10" font-weight="700" fill="#FFC928" text-anchor="middle">OFFICIAL</text>
+  <text x="670" y="482" font-family="sans-serif" font-size="9" font-weight="600" fill="#F2F4F1" text-anchor="middle">FINALIST</text>
+
+  <!-- Footer Metadata -->
+  <text x="120" y="480" font-family="monospace" font-size="11" fill="#7E847C">DATE: 2026</text>
+  <text x="120" y="500" font-family="monospace" font-size="11" fill="#7E847C">STATUS: VERIFIED DOCUMENT</text>
+
+  <rect x="120" y="520" width="180" height="24" rx="12" fill="#FFC928" fill-opacity="0.1" stroke="#FFC928" stroke-width="1" />
+  <text x="210" y="536" font-family="sans-serif" font-size="10" font-weight="600" fill="#FFC928" text-anchor="middle">PDF ATTACHMENT</text>
+</svg>

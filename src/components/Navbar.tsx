@@ -12,9 +12,9 @@ const navItems: NavItem[] = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
   { name: "Achievements", href: "#achievements" },
   { name: "Certificates", href: "#certificates" },
+  { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -68,8 +68,8 @@ export default function Navbar() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-graphite/95 backdrop-blur-md border-b border-cloud-border py-4 shadow-lg shadow-black/30"
-          : "bg-graphite/60 backdrop-blur-sm py-6 border-b border-transparent"
+          ? "bg-[#FDF1EA]/95 backdrop-blur-md border-b border-[#03393F]/10 py-4 shadow-sm"
+          : "bg-[#FDF1EA]/75 backdrop-blur-sm py-6 border-b border-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex items-center justify-between">
@@ -77,12 +77,12 @@ export default function Navbar() {
         <a
           href="#home"
           onClick={(e) => handleNavClick(e, "#home")}
-          className="group flex items-center gap-2 cursor-pointer focus:outline-none"
+          className="group flex items-center gap-1.5 cursor-pointer focus:outline-none"
         >
-          <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-cloud group-hover:text-sunshine transition-colors">
+          <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#03393F] transition-colors">
             Maheen Fatima
           </span>
-          <span className="w-1.5 h-1.5 rounded-full bg-sunshine inline-block group-hover:scale-125 transition-transform" />
+          <span className="w-2 h-2 rounded-full bg-[#F2BB8E] inline-block group-hover:scale-125 transition-transform" />
         </a>
 
         {/* Desktop Navigation Items */}
@@ -95,12 +95,14 @@ export default function Navbar() {
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`relative py-1 transition-colors duration-200 ${
-                  isActive ? "text-sunshine font-semibold" : "text-cloud-muted hover:text-cloud"
+                  isActive
+                    ? "text-[#03393F] font-bold"
+                    : "text-[#03393F]/75 hover:text-[#03393F] font-medium"
                 }`}
               >
                 {item.name}
                 {isActive && (
-                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-sunshine rounded-full animate-fade-in" />
+                  <span className="absolute bottom-0 left-0 right-0 h-[2.5px] bg-[#F2BB8E] rounded-full animate-fade-in" />
                 )}
               </a>
             );
@@ -112,10 +114,10 @@ export default function Navbar() {
           <a
             href="#contact"
             onClick={(e) => handleNavClick(e, "#contact")}
-            className="group relative inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-sunshine/80 text-sunshine text-sm font-semibold tracking-wide hover:bg-sunshine hover:text-graphite transition-all duration-200 shadow-sm hover:shadow-gold-sm"
+            className="group relative inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#03393F] text-white text-sm font-semibold tracking-wide hover:bg-[#022428] transition-all duration-200 shadow-sm"
           >
             <span>Get in Touch</span>
-            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#F2BB8E]" />
           </a>
         </div>
 
@@ -134,7 +136,7 @@ export default function Navbar() {
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-graphite-900/98 backdrop-blur-xl border-b border-cloud-border px-6 pt-4 pb-8 transition-all">
+        <div className="lg:hidden bg-[#FDF1EA]/98 backdrop-blur-xl border-b border-[#03393F]/15 px-6 pt-4 pb-8 transition-all">
           <nav className="flex flex-col space-y-3">
             {navItems.map((item) => {
               const isActive = activeSection === item.href.substring(1);
@@ -145,22 +147,22 @@ export default function Navbar() {
                   onClick={(e) => handleNavClick(e, item.href)}
                   className={`px-3 py-2 rounded-md text-base transition-colors ${
                     isActive
-                      ? "bg-cloud-surface text-sunshine font-semibold border-l-2 border-sunshine"
-                      : "text-cloud-muted hover:text-cloud"
+                      ? "bg-[#FAE6D9] text-[#03393F] font-bold border-l-2 border-[#03393F]"
+                      : "text-[#03393F]/75 hover:text-[#03393F]"
                   }`}
                 >
                   {item.name}
                 </a>
               );
             })}
-            <div className="pt-4 border-t border-cloud-border">
+            <div className="pt-4 border-t border-[#03393F]/15">
               <a
                 href="#contact"
                 onClick={(e) => handleNavClick(e, "#contact")}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-sunshine text-sunshine font-semibold hover:bg-sunshine hover:text-graphite transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-[#03393F] text-white font-semibold hover:bg-[#022428] transition-colors"
               >
                 <span>Get in Touch</span>
-                <ArrowUpRight className="w-4 h-4" />
+                <ArrowUpRight className="w-4 h-4 text-[#F2BB8E]" />
               </a>
             </div>
           </nav>

@@ -27,7 +27,7 @@ export default function CertificateModal({ certificate, onClose }: CertificateMo
   if (!certificate) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#03393F]/45 backdrop-blur-md animate-fade-in">
       <div
         className="relative w-full max-w-4xl bg-graphite-900 border border-cloud-border rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}

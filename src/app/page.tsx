@@ -7,6 +7,7 @@ import CertificatesSection from "@/components/CertificatesSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import ShowreelButton from "@/components/animations/ShowreelButton";
 import {
   initialAboutData,
   initialSkillCategories,
@@ -49,6 +50,9 @@ export default function Home() {
 
       {/* Footer */}
       <Footer />
+
+      {/* Floating Cinematic Tour Controller (from Showreel source) */}
+      <ShowreelButton />
     </main>
   );
 }

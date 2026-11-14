@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { X, ExternalLink, Code, CheckCircle, Target, Lightbulb, UserCheck, Layers } from "lucide-react";
+import { X, ExternalLink, Code, CheckCircle, Target, Lightbulb, UserCheck } from "lucide-react";
 import { Project } from "@/types/portfolio";
 import { GithubIcon } from "./Icons";
+import ProjectVisual from "@/components/project-visuals/ProjectVisual";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -28,7 +29,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-[#03393F]/45 backdrop-blur-md animate-fade-in">
       <div
         className="relative w-full max-w-4xl bg-graphite-900 border border-cloud-border rounded-2xl overflow-hidden shadow-2xl flex flex-col max-h-[92vh]"
         onClick={(e) => e.stopPropagation()}
@@ -60,29 +61,20 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         <div className="overflow-y-auto p-6 sm:p-8 space-y-8">
           
           {/* Project Screenshot / Visual Preview Banner */}
-          <div className="w-full aspect-video bg-graphite-950 border border-cloud-border rounded-xl overflow-hidden flex flex-col items-center justify-center relative p-8 text-center group">
-            {project.images.length > 0 ? (
+          <div className="w-full aspect-video bg-white border border-cloud-border rounded-xl overflow-hidden relative shadow-inner flex items-center justify-center p-2">
+            {project.images && project.images.length > 0 ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={project.images[0]}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain select-none"
               />
             ) : (
-              <div className="flex flex-col items-center justify-center max-w-md">
-                <div className="w-16 h-16 rounded-2xl bg-sunshine/10 border border-sunshine/30 flex items-center justify-center text-sunshine mb-4 shadow-gold-sm">
-                  <Layers className="w-8 h-8" />
-                </div>
-                <h4 className="font-serif text-lg text-cloud mb-1">
-                  Project Screenshot Canvas
-                </h4>
-                <p className="text-xs text-cloud-muted leading-relaxed">
-                  High-fidelity screenshot showcase ready for interface images, system architecture diagrams, or workflow captures.
-                </p>
-                <div className="mt-3 text-[11px] text-sunshine/80 font-mono">
-                  [Screenshots will be uploaded in Phase 4]
-                </div>
-              </div>
+              <ProjectVisual
+                projectId={project.id}
+                isActive={true}
+                reduceMotion={false}
+              />
             )}
           </div>
 

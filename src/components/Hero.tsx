@@ -1,7 +1,14 @@
 "use client";
 
 import React from "react";
-import { ArrowDown, Sparkles, FolderGit2, Mail, Award, Code2, GraduationCap } from "lucide-react";
+import {
+  Mail,
+  Award,
+  Code2,
+  GraduationCap,
+  ArrowUpRight,
+} from "lucide-react";
+import ScrollReveal from "./animations/ScrollReveal";
 
 export default function Hero() {
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -21,183 +28,249 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-28 pb-16 lg:py-0 overflow-hidden bg-graphite"
+      className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-32 lg:pt-36 pb-12 sm:pb-16 overflow-hidden bg-[#FDF1EA] scroll-mt-28"
     >
-      {/* Background Cinematic Golden Ambient Glows */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-sunshine/10 blur-[140px] pointer-events-none" />
-      <div className="absolute top-1/2 right-10 w-[420px] h-[420px] rounded-full bg-sunshine/5 blur-[160px] pointer-events-none" />
+      {/* Background Soft Warm Ambient Lighting */}
+      <div className="absolute top-16 left-1/4 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#FDD9A5]/45 blur-[140px] pointer-events-none -z-10" />
+      <div className="absolute top-1/3 right-10 w-[500px] h-[500px] rounded-full bg-[#F2BB8E]/35 blur-[160px] pointer-events-none -z-10" />
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          
-          {/* LEFT SIDE: Portrait Section (approx 40-45% width -> 5 columns on lg) */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center order-2 lg:order-1">
-            <div className="relative w-full max-w-md aspect-[4/5] flex items-center justify-center">
-              
-              {/* Subtle Warm Golden Spotlight Lighting Behind Portrait */}
-              <div className="absolute inset-0 -m-6 rounded-3xl bg-radial-gradient from-sunshine/25 via-sunshine/5 to-transparent blur-2xl" />
-              <div className="absolute w-72 h-72 rounded-full bg-sunshine/20 blur-3xl animate-pulse -z-10" />
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full flex-1 flex flex-col justify-between relative z-10">
 
-              {/* Portrait Frame & Blending Container */}
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border border-cloud-border bg-gradient-to-b from-graphite-100 via-graphite to-graphite-900 shadow-2xl flex flex-col items-center justify-end group">
-                
-                {/* Silhouette / Realistic Photographic Placeholder Figure */}
-                <div className="relative w-full h-full flex flex-col items-center justify-center p-8 text-center">
-                  
-                  {/* Subtle Golden Halo behind subject head */}
-                  <div className="w-40 h-40 rounded-full bg-sunshine/15 blur-xl absolute top-12" />
-                  
-                  {/* Stylized Minimal Photographic Silhouette */}
-                  <div className="relative z-10 flex flex-col items-center">
-                    <div className="w-28 h-28 rounded-full border-2 border-sunshine/60 bg-graphite-200/90 flex items-center justify-center shadow-gold-sm mb-4">
-                      <span className="font-serif text-3xl font-bold text-sunshine tracking-wider">MF</span>
-                    </div>
-
-                    <div className="w-56 h-28 bg-gradient-to-t from-graphite-950 via-graphite-200 to-graphite-100/50 rounded-t-full border-t border-sunshine/30 flex items-center justify-center">
-                      <div className="w-40 h-20 rounded-t-full bg-graphite-900 border-t border-cloud-border/40" />
-                    </div>
-                  </div>
-
-                  {/* Gradient Blend to Deep Graphite at bottom */}
-                  <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-graphite via-graphite/90 to-transparent pointer-events-none z-20" />
-
-                  {/* Editorial Tag Overlay */}
-                  <div className="relative z-30 mt-auto pt-6 pb-2">
-                    <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-graphite-900/90 border border-sunshine/40 text-xs text-cloud-muted backdrop-blur-md">
-                      <Sparkles className="w-3.5 h-3.5 text-sunshine" />
-                      <span>Maheen Fatima</span>
-                    </div>
-                    <p className="text-[11px] text-cloud-subtle mt-2 max-w-xs">
-                      B.Tech in Computer Science & Engineering • 3rd Year
-                    </p>
-                  </div>
-                </div>
-
-                {/* Subtle outer corner accents */}
-                <div className="absolute top-3 left-3 w-3 h-3 border-t-2 border-l-2 border-sunshine/50" />
-                <div className="absolute top-3 right-3 w-3 h-3 border-t-2 border-r-2 border-sunshine/50" />
-                <div className="absolute bottom-3 left-3 w-3 h-3 border-b-2 border-l-2 border-sunshine/50 z-30" />
-                <div className="absolute bottom-3 right-3 w-3 h-3 border-b-2 border-r-2 border-sunshine/50 z-30" />
-              </div>
+        {/* ==================================================================== */}
+        {/* TOP EDITORIAL METADATA BAR                                           */}
+        {/* ==================================================================== */}
+        <ScrollReveal yOffset={15} blurAmount={6}>
+          <div className="flex items-center justify-between pb-3 sm:pb-4 border-b border-[#03393F]/15 text-[11px] sm:text-xs font-mono uppercase tracking-[0.22em] text-[#03393F]/85">
+            <div className="flex items-center gap-2 font-semibold">
+              <span className="w-2 h-2 rounded-full bg-[#F2BB8E]" />
+              <span>Software &amp; Systems Engineer</span>
+            </div>
+            <div className="flex items-center gap-2 font-semibold text-[#03393F]/80">
+              <span className="text-[#F2BB8E] text-base leading-none">✦</span>
+              <span>2026 • Class of 2028</span>
             </div>
           </div>
+        </ScrollReveal>
 
-          {/* RIGHT SIDE: Content Section (approx 55-60% width -> 7 columns on lg) */}
-          <div className="lg:col-span-7 flex flex-col justify-center order-1 lg:order-2 space-y-7">
-            
-            {/* Small Introductory Label */}
-            <div className="flex items-center gap-3">
-              <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-graphite-100 border border-sunshine/30 text-xs font-semibold tracking-wider uppercase text-sunshine">
-                <span className="w-1.5 h-1.5 rounded-full bg-sunshine animate-ping" />
-                Computer Science & Engineering • 3rd Year
-              </span>
-              <span className="text-xs text-cloud-subtle hidden sm:inline-block">
-                | Portfolio
-              </span>
-            </div>
+        {/* ==================================================================== */}
+        {/* HERO CANVAS: GIANT MASTHEAD + OVERLAPPING EDITORIAL PORTRAIT         */}
+        {/* ==================================================================== */}
+        <div className="relative w-full pt-4 sm:pt-6 lg:pt-8 flex-1 flex flex-col justify-center">
 
-            {/* Main Headline */}
-            <div className="space-y-2">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal tracking-tight text-cloud leading-[1.15]">
-                Creating With{" "}
-                <span className="italic font-medium text-sunshine underline decoration-sunshine/40 decoration-wavy decoration-1 underline-offset-8">
-                  Purpose
-                </span>
+          {/* 1. Giant Masthead Name (Dominant Serif Heading Across Upper Section) */}
+          <div className="w-full select-none pointer-events-none relative z-0 overflow-hidden sm:overflow-visible">
+            <ScrollReveal delay={0.08} yOffset={25} blurAmount={10}>
+              <h1 className="font-serif font-bold uppercase tracking-tight text-[#03393F] leading-[0.88] whitespace-nowrap text-[clamp(2.6rem,11.2vw,11.6rem)]">
+                Maheen Fatima
               </h1>
-            </div>
+            </ScrollReveal>
+          </div>
 
-            {/* Short Professional Introduction */}
-            <p className="text-cloud-muted text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-              Driven by curiosity, creativity, and technology. Focused on turning ideas into tangible projects, engineering practical solutions, and continuous learning.
-            </p>
+          {/* 2. Content Layout: Left Details Column & Right Overlapping Cutout */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end relative z-20 -mt-4 sm:-mt-8 lg:-mt-16 xl:-mt-20">
 
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href="#projects"
-                onClick={(e) => handleScrollTo(e, "projects")}
-                className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-sunshine text-graphite font-semibold text-sm tracking-wide shadow-gold-sm hover:bg-sunshine-hover hover:shadow-gold-md transition-all duration-200"
-              >
-                <FolderGit2 className="w-4 h-4 text-graphite" />
-                <span>Explore My Work</span>
-              </a>
-
-              <a
-                href="#contact"
-                onClick={(e) => handleScrollTo(e, "contact")}
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-cloud-border bg-cloud-surface text-cloud font-medium text-sm tracking-wide hover:border-sunshine/70 hover:text-sunshine transition-all duration-200"
-              >
-                <Mail className="w-4 h-4 text-sunshine" />
-                <span>Get in Touch</span>
-              </a>
-            </div>
-
-            {/* Three Compact Professional Highlight Areas */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-cloud-border">
+            {/* ── Left Column: Editorial Information & Tagline ── */}
+            <div className="lg:col-span-6 flex flex-col justify-between space-y-6 sm:space-y-7 pt-4 lg:pt-6 order-2 lg:order-1">
               
-              <div className="p-4 rounded-xl bg-graphite-100/60 border border-cloud-border hover:border-sunshine/40 transition-colors">
-                <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="p-1.5 rounded-lg bg-sunshine/10 text-sunshine">
-                    <GraduationCap className="w-4 h-4" />
+              <ScrollReveal delay={0.18} yOffset={20} blurAmount={8}>
+                <div className="space-y-3.5 sm:space-y-4">
+                  {/* Category Kicker */}
+                  <div className="inline-flex items-center gap-2">
+                    <span className="text-xs font-mono uppercase tracking-[0.25em] text-[#F2BB8E] font-bold">
+                      Creative &amp; Technical
+                    </span>
                   </div>
-                  <span className="text-xs font-semibold text-sunshine tracking-wider uppercase">
-                    01. Academic
+
+                  {/* Role / Designation */}
+                  <h2 className="font-serif text-3xl sm:text-4xl lg:text-[2.75rem] font-medium text-[#03393F] uppercase tracking-tight leading-[1.08]">
+                    Software &amp;<br />
+                    <span className="italic text-[#03393F]">Systems Architect</span>
+                  </h2>
+
+                  {/* Horizontal Divider Line */}
+                  <div className="w-12 h-[2px] bg-[#F2BB8E] my-3 rounded-full" />
+
+                  {/* Introduction / About description from homepage */}
+                  <p className="text-sm sm:text-base text-[#21585F] leading-relaxed max-w-lg font-normal">
+                    Driven by curiosity, creativity, and technology. Focused on turning ideas into tangible projects, engineering practical solutions, and continuous learning.
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              {/* Tagline Block (Replaces "ALYSSA MARLOWE" from reference image) */}
+              <ScrollReveal delay={0.25} yOffset={20} blurAmount={8}>
+                <div className="pt-4 border-t border-[#03393F]/15">
+                  <span className="text-[10.5px] font-mono uppercase tracking-[0.25em] text-[#5D867F] block mb-1">
+                    Engineering Creed
+                  </span>
+                  <div className="font-serif text-2xl sm:text-3xl text-[#03393F] uppercase tracking-wide leading-tight">
+                    Creating With{" "}
+                    <span className="italic text-[#F2BB8E] font-normal">Purpose</span>
+                  </div>
+                  <p className="text-xs font-mono text-[#5D867F] tracking-wider mt-1">
+                    B.Tech in CSE • Raj Kumar Goel Institute of Technology (AKTU)
+                  </p>
+                </div>
+              </ScrollReveal>
+
+              {/* Action Buttons */}
+              <ScrollReveal delay={0.32} yOffset={20} blurAmount={8}>
+                <div className="flex flex-wrap items-center gap-3.5 pt-1">
+                  <a
+                    href="#projects"
+                    onClick={(e) => handleScrollTo(e, "projects")}
+                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full bg-[#03393F] text-white font-semibold text-xs sm:text-sm tracking-wide shadow-md hover:bg-[#022428] transition-all cursor-pointer active:scale-95 group"
+                  >
+                    <Code2 className="w-4 h-4 text-[#F2BB8E]" />
+                    <span>Explore My Work</span>
+                    <ArrowUpRight className="w-4 h-4 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+
+                  <a
+                    href="#contact"
+                    onClick={(e) => handleScrollTo(e, "contact")}
+                    className="inline-flex items-center gap-2 px-6 sm:px-7 py-3 rounded-full border border-[#03393F] bg-[#F2BB8E] text-[#03393F] font-semibold text-xs sm:text-sm tracking-wide hover:bg-[#E8AE7E] transition-all cursor-pointer shadow-sm active:scale-95 group"
+                  >
+                    <Mail className="w-4 h-4 text-[#03393F]" />
+                    <span>Get in Touch</span>
+                    <ArrowUpRight className="w-4 h-4 text-[#03393F] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  </a>
+                </div>
+              </ScrollReveal>
+
+            </div>
+
+            {/* ── Right Column: Prominent Portrait Overlapping Masthead ── */}
+            <div className="lg:col-span-6 flex flex-col items-center lg:items-end justify-end relative order-1 lg:order-2">
+              <ScrollReveal delay={0.15} duration={0.9} yOffset={25} className="w-full flex justify-center lg:justify-end">
+                <div className="relative w-full max-w-[390px] sm:max-w-[450px] lg:max-w-[490px] aspect-[4/5] flex items-end justify-center">
+
+                  {/* Warm Golden Glow Behind Profile */}
+                  <div className="absolute inset-x-8 top-12 bottom-2 rounded-full bg-[#FDD9A5]/60 blur-[100px] pointer-events-none -z-10" />
+
+                  {/* Profile Cutout Image of Maheen (overlapping the name typography above) */}
+                  <div
+                    className="relative z-20 w-full h-full flex items-end justify-center select-none"
+                    style={{
+                      WebkitMaskImage: "linear-gradient(to bottom, black 86%, transparent 100%)",
+                      maskImage: "linear-gradient(to bottom, black 86%, transparent 100%)",
+                    }}
+                  >
+                    <img
+                      src="/images/maheen-hero.png"
+                      alt="Maheen Fatima - Computer Science & Systems Engineering"
+                      className="w-full h-full object-contain object-bottom drop-shadow-xl"
+                    />
+                  </div>
+
+                  {/* Circular Rotating Monogram Stamp (Matching reference image bottom-right stamp) */}
+                  <div className="absolute -bottom-2 right-2 sm:right-4 z-30 pointer-events-none">
+                    <div className="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center">
+                      {/* Rotating Circular Text SVG */}
+                      <svg
+                        viewBox="0 0 120 120"
+                        className="w-full h-full animate-spin-slow"
+                        style={{ animationDuration: "25s" }}
+                      >
+                        <defs>
+                          <path
+                            id="heroCircleTextPath"
+                            d="M 60, 60 m -44, 0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"
+                          />
+                        </defs>
+                        <text className="text-[9.5px] font-mono uppercase tracking-[0.24em] fill-[#03393F] font-semibold">
+                          <textPath href="#heroCircleTextPath" startOffset="0%">
+                            ✦ COMPUTER SCIENCE ✦ SYSTEMS &amp; DEV ✦
+                          </textPath>
+                        </text>
+                      </svg>
+
+                      {/* Central Monogram "M" Badge */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-[#FAE6D9] border border-[#F2BB8E] flex items-center justify-center shadow-sm">
+                          <span className="font-serif font-bold text-lg text-[#03393F]">
+                            M
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </ScrollReveal>
+            </div>
+
+          </div>
+
+        </div>
+
+        {/* ==================================================================== */}
+        {/* THREE COMPACT ACADEMIC & MINDSET CARDS (PRESERVING EXISTING DATA)   */}
+        {/* ==================================================================== */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 pt-10 sm:pt-12 border-t border-[#03393F]/15">
+          
+          {/* 1. Academic */}
+          <ScrollReveal delay={0.35} yOffset={20} blurAmount={8}>
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAE6D9] border border-[rgba(93,134,127,0.25)] shadow-sm h-full flex flex-col justify-between hover:border-[#03393F]/50 transition-colors">
+              <div>
+                <div className="flex items-center gap-2 mb-2.5">
+                  <GraduationCap className="w-4 h-4 text-[#03393F]" />
+                  <span className="text-[11px] font-mono font-bold tracking-wider text-[#03393F] uppercase">
+                    01. ACADEMIC
                   </span>
                 </div>
-                <h3 className="text-sm font-semibold text-cloud">B.Tech in CSE</h3>
-                <p className="text-xs text-cloud-muted mt-1 leading-snug">
+                <h3 className="text-sm sm:text-base font-bold text-[#03393F] leading-snug">
+                  B.Tech in CSE
+                </h3>
+                <p className="text-[11px] sm:text-xs text-[#21585F] mt-1 leading-relaxed">
                   Raj Kumar Goel Institute of Technology (AKTU Lucknow) • Class of 2028
                 </p>
               </div>
+            </div>
+          </ScrollReveal>
 
-              <div className="p-4 rounded-xl bg-graphite-100/60 border border-cloud-border hover:border-sunshine/40 transition-colors">
-                <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="p-1.5 rounded-lg bg-sunshine/10 text-sunshine">
-                    <Code2 className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs font-semibold text-sunshine tracking-wider uppercase">
-                    02. Engineering
+          {/* 2. Engineering */}
+          <ScrollReveal delay={0.4} yOffset={20} blurAmount={8}>
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAE6D9] border border-[rgba(93,134,127,0.25)] shadow-sm h-full flex flex-col justify-between hover:border-[#03393F]/50 transition-colors">
+              <div>
+                <div className="flex items-center gap-2 mb-2.5">
+                  <Code2 className="w-4 h-4 text-[#03393F]" />
+                  <span className="text-[11px] font-mono font-bold tracking-wider text-[#03393F] uppercase">
+                    02. ENGINEERING
                   </span>
                 </div>
-                <h3 className="text-sm font-semibold text-cloud">Software & Systems</h3>
-                <p className="text-xs text-cloud-muted mt-1 leading-snug">
-                  Software development, algorithmic problem solving & tangible projects.
+                <h3 className="text-sm sm:text-base font-bold text-[#03393F] leading-snug">
+                  Software &amp; Systems
+                </h3>
+                <p className="text-[11px] sm:text-xs text-[#21585F] mt-1 leading-relaxed">
+                  Software development, algorithmic problem solving &amp; tangible projects.
                 </p>
               </div>
+            </div>
+          </ScrollReveal>
 
-              <div className="p-4 rounded-xl bg-graphite-100/60 border border-cloud-border hover:border-sunshine/40 transition-colors">
-                <div className="flex items-center gap-2.5 mb-1.5">
-                  <div className="p-1.5 rounded-lg bg-sunshine/10 text-sunshine">
-                    <Award className="w-4 h-4" />
-                  </div>
-                  <span className="text-xs font-semibold text-sunshine tracking-wider uppercase">
-                    03. Mindset
+          {/* 3. Mindset */}
+          <ScrollReveal delay={0.45} yOffset={20} blurAmount={8}>
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#FAE6D9] border border-[rgba(93,134,127,0.25)] shadow-sm h-full flex flex-col justify-between hover:border-[#03393F]/50 transition-colors">
+              <div>
+                <div className="flex items-center gap-2 mb-2.5">
+                  <Award className="w-4 h-4 text-[#03393F]" />
+                  <span className="text-[11px] font-mono font-bold tracking-wider text-[#03393F] uppercase">
+                    03. MINDSET
                   </span>
                 </div>
-                <h3 className="text-sm font-semibold text-cloud">Learn by Doing</h3>
-                <p className="text-xs text-cloud-muted mt-1 leading-snug">
+                <h3 className="text-sm sm:text-base font-bold text-[#03393F] leading-snug">
+                  Learn by Doing
+                </h3>
+                <p className="text-[11px] sm:text-xs text-[#21585F] mt-1 leading-relaxed">
                   Curiosity, creativity, team initiative, and real-world impact.
                 </p>
               </div>
-
             </div>
-
-          </div>
+          </ScrollReveal>
 
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="mt-12 hidden lg:flex justify-center">
-          <a
-            href="#about"
-            onClick={(e) => handleScrollTo(e, "about")}
-            className="flex flex-col items-center gap-2 text-cloud-subtle hover:text-sunshine transition-colors group"
-            aria-label="Scroll to About section"
-          >
-            <span className="text-xs font-medium tracking-widest uppercase">Scroll Down</span>
-            <ArrowDown className="w-4 h-4 animate-bounce text-sunshine" />
-          </a>
-        </div>
       </div>
     </section>
   );

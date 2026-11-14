@@ -37,9 +37,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-graphite-950 border-t border-cloud-border py-16 relative">
+    <footer className="bg-[#03393F] text-[#FDF1EA] border-t border-[#5D867F]/30 py-16 relative">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-cloud-border/70">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 pb-12 border-b border-[#5D867F]/30">
           
           {/* Brand Info */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -48,24 +48,24 @@ export default function Footer() {
               onClick={(e) => handleNavClick(e, "#home")}
               className="group flex items-center gap-2 cursor-pointer mb-2"
             >
-              <span className="font-serif text-2xl font-bold tracking-tight text-cloud group-hover:text-sunshine transition-colors">
+              <span className="font-serif text-2xl font-bold tracking-tight text-[#FDF1EA] group-hover:text-[#F2BB8E] transition-colors">
                 Maheen Fatima
               </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-sunshine inline-block" />
+              <span className="w-1.5 h-1.5 rounded-full bg-[#F2BB8E] inline-block" />
             </a>
-            <p className="text-xs text-cloud-muted max-w-sm">
-              Personal portfolio engineered with Next.js, TypeScript, and a cinematic editorial design system.
+            <p className="text-xs text-[#FAE6D9]/80 max-w-sm">
+              Personal portfolio engineered with Next.js, TypeScript, and a warm editorial design aesthetic.
             </p>
           </div>
 
           {/* Quick Navigation Links */}
-          <nav className="flex flex-wrap justify-center gap-6 text-xs text-cloud-muted font-medium">
+          <nav className="flex flex-wrap justify-center gap-6 text-xs text-[#FAE6D9]/80 font-medium">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="hover:text-sunshine transition-colors"
+                className="hover:text-[#F2BB8E] transition-colors"
               >
                 {link.name}
               </a>
@@ -74,24 +74,24 @@ export default function Footer() {
 
           {/* Back to Top Button */}
           <div>
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className="p-3 rounded-full bg-graphite border border-cloud-border hover:border-sunshine text-cloud-muted hover:text-sunshine transition-all group shadow-sm"
-              aria-label="Scroll back to top"
-            >
-              <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
-            </button>
+              <button
+                type="button"
+                onClick={scrollToTop}
+                className="btn-sunshine p-3 rounded-full bg-[#022428] border border-[#5D867F]/40 hover:border-[#F2BB8E] text-[#F2BB8E] hover:bg-[#F2BB8E] hover:text-[#03393F] transition-all group shadow-sm cursor-pointer"
+                aria-label="Scroll back to top"
+              >
+                <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+              </button>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-cloud-subtle">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#FAE6D9]/60">
           <p>© {new Date().getFullYear()} Maheen Fatima. All rights reserved.</p>
           <div className="flex items-center gap-2">
-            <span>Built with precision & high standards</span>
-            <span className="text-sunshine">•</span>
-            <span className="text-sunshine font-mono">Editorial Portfolio</span>
+            <span>Built with precision &amp; purpose</span>
+            <span className="text-[#F2BB8E]">•</span>
+            <span className="text-[#F2BB8E] font-mono">Warm Editorial Portfolio</span>
           </div>
         </div>
       </div>

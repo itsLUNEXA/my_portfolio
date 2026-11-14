@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="1200" height="1500">
+  <defs>
+    <radialGradient id="bgGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFC928" stop-opacity="0.15" />
+      <stop offset="60%" stop-color="#1C1D20" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0E0F10" stop-opacity="1" />
+    </radialGradient>
+    <linearGradient id="goldBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFC928" stop-opacity="0.8" />
+      <stop offset="50%" stop-color="#9E7812" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#FFC928" stop-opacity="0.8" />
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#F2F4F1" stroke-width="1" opacity="0.03" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="1500" fill="#0D0E0F" />
+  <rect width="1200" height="1500" fill="url(#bgGlow)" />
+  <rect width="1200" height="1500" fill="url(#grid)" />
+
+  <!-- Outer Architectural Framing -->
+  <rect x="50" y="50" width="1100" height="1400" rx="36" fill="none" stroke="url(#goldBorder)" stroke-width="2" />
+  <rect x="70" y="70" width="1060" height="1360" rx="24" fill="none" stroke="#F2F4F1" stroke-width="1" opacity="0.08" />
+
+  <!-- Corner Corner Accents -->
+  <path d="M50 120 L50 50 L120 50" fill="none" stroke="#FFC928" stroke-width="4" />
+  <path d="M1150 120 L1150 50 L1080 50" fill="none" stroke="#FFC928" stroke-width="4" />
+  <path d="M50 1380 L50 1450 L120 1450" fill="none" stroke="#FFC928" stroke-width="4" />
+  <path d="M1150 1380 L1150 1450 L1080 1450" fill="none" stroke="#FFC928" stroke-width="4" />
+
+  <!-- Top Metadata Header -->
+  <text x="120" y="160" font-family="monospace" font-size="20" font-weight="600" fill="#FFC928" letter-spacing="4">SYSTEM ARCHITECTURE • MAHEEN FATIMA</text>
+  <rect x="120" y="190" width="300" height="38" rx="19" fill="#1C1D20" stroke="#FFC928" stroke-width="1.5" />
+  <text x="145" y="215" font-family="sans-serif" font-size="16" font-weight="600" fill="#F2F4F1">Full-Stack Campus Platform</text>
+
+  <!-- Central Dynamic Vector Icon -->
+  <g transform="translate(0, 40)">
+    
+        <circle cx="600" cy="580" r="140" fill="#1C1D20" stroke="#FFC928" stroke-width="3"/>
+        <path d="M480 580 Q 540 500 570 580 T 630 660 T 720 580" fill="none" stroke="#FFC928" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="570" cy="580" r="10" fill="#FFC928"/>
+        <circle cx="630" cy="660" r="10" fill="#FFC928"/>
+        <circle cx="500" cy="480" r="30" fill="#1C1D20" stroke="#FFC928" stroke-width="2"/>
+        <circle cx="700" cy="480" r="30" fill="#1C1D20" stroke="#FFC928" stroke-width="2"/>
+        <line x1="520" y1="500" x2="570" y2="540" stroke="#FFC928" stroke-width="2" stroke-dasharray="4 4"/>
+        <line x1="680" y1="500" x2="630" y2="540" stroke="#FFC928" stroke-width="2" stroke-dasharray="4 4"/>
+        
+  </g>
+
+  <!-- Lower Card Block for Title & Tech Stack -->
+  <rect x="120" y="960" width="960" height="360" rx="28" fill="#16171A" stroke="#F2F4F1" stroke-width="1.5" opacity="0.95" />
+  <rect x="120" y="960" width="960" height="360" rx="28" fill="none" stroke="#FFC928" stroke-width="1.5" opacity="0.4" />
+
+  <text x="180" y="1050" font-family="Playfair Display, Georgia, serif" font-size="52" font-weight="700" fill="#F2F4F1">Campus Pulse</text>
+  <text x="180" y="1110" font-family="sans-serif" font-size="26" font-weight="400" fill="#FFC928">Campus Community & Interactive Quizzing</text>
+
+  <line x1="180" y1="1160" x2="1020" y2="1160" stroke="#F2F4F1" stroke-width="1" opacity="0.15" />
+
+  <!-- Tech Badge -->
+  <rect x="180" y="1200" width="600" height="50" rx="12" fill="#1C1D20" stroke="#FFC928" stroke-width="1" />
+  <text x="210" y="1233" font-family="monospace" font-size="18" font-weight="500" fill="#B8BCB6">Flutter • Dart • Serverpod • PostgreSQL</text>
+
+  <!-- Production Quality Seal -->
+  <circle cx="960" cy="1225" r="32" fill="#1C1D20" stroke="#FFC928" stroke-width="2" />
+  <text x="960" y="1232" font-family="monospace" font-size="16" font-weight="700" fill="#FFC928" text-anchor="middle">PROD</text>
+</svg>
