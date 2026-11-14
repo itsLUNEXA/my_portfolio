@@ -117,4 +117,3 @@ To enable live email delivery from the contact form (e.g. via Resend, SendGrid, 
 - **LinkedIn**: [linkedin.com/in/itslunexa](https://www.linkedin.com/in/itslunexa/)
 - **GitHub**: [github.com/itsLUNEXA](https://github.com/itsLUNEXA)
 - **Email**: `26fatimasiddiqui@gmail.com`
-- **Phone**: `+91 7455996287`

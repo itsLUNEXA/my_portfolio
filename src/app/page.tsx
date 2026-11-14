@@ -43,7 +43,6 @@ export default function Home() {
       {/* Section 6: Contact */}
       <ContactSection
         email={initialAboutData.email}
-        phone={initialAboutData.phone}
         linkedinUrl={initialAboutData.linkedinUrl}
         githubUrl={initialAboutData.githubUrl}
       />

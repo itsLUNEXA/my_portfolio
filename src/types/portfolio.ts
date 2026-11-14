@@ -66,6 +66,5 @@ export interface AboutDetails {
   linkedinUrl: string;
   githubUrl: string;
   email: string;
-  phone?: string;
   isPlaceholder?: boolean;
 }

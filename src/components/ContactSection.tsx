@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Mail, Phone, Send, CheckCircle2, AlertCircle, Loader2, ArrowUpRight } from "lucide-react";
+import { Mail, Send, CheckCircle2, AlertCircle, Loader2, ArrowUpRight } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import WordReveal from "./animations/WordReveal";
 import ScrollReveal from "./animations/ScrollReveal";
@@ -9,12 +9,11 @@ import WordmarkReveal from "./animations/WordmarkReveal";
 
 interface ContactSectionProps {
   email: string;
-  phone?: string;
   linkedinUrl: string;
   githubUrl: string;
 }
 
-export default function ContactSection({ email, phone, linkedinUrl, githubUrl }: ContactSectionProps) {
+export default function ContactSection({ email, linkedinUrl, githubUrl }: ContactSectionProps) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -185,26 +184,6 @@ export default function ContactSection({ email, phone, linkedinUrl, githubUrl }:
                       </a>
                     </div>
                   </div>
-
-                  {/* Phone Item */}
-                  {phone && (
-                    <div className="flex items-start gap-4">
-                      <div className="p-2.5 rounded-xl bg-graphite border border-cloud-border text-sunshine shrink-0 mt-0.5">
-                        <Phone className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <span className="text-xs uppercase tracking-wider text-cloud-subtle block">
-                          Direct Contact
-                        </span>
-                        <a
-                          href={`tel:${phone}`}
-                          className="text-cloud font-medium text-sm sm:text-base hover:text-sunshine transition-colors"
-                        >
-                          {phone}
-                        </a>
-                      </div>
-                    </div>
-                  )}
 
                 </div>
 

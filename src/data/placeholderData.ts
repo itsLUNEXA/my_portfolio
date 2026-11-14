@@ -14,7 +14,6 @@ export const initialAboutData: AboutDetails = {
   linkedinUrl: "https://www.linkedin.com/in/itslunexa/",
   githubUrl: "https://github.com/itsLUNEXA",
   email: "26fatimasiddiqui@gmail.com",
-  phone: "+91 7455996287",
   isPlaceholder: false,
 };
 

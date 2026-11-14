@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { GraduationCap, Building2, Calendar, Award, ExternalLink, Phone, Mail } from "lucide-react";
+import { GraduationCap, Building2, Calendar, Award, ExternalLink, Mail } from "lucide-react";
 import { AboutDetails } from "@/types/portfolio";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 import WordReveal from "./animations/WordReveal";
@@ -159,16 +159,6 @@ export default function AboutSection({ data }: AboutSectionProps) {
                       <ExternalLink className="w-3 h-3 text-cloud-subtle" />
                     </a>
                   </div>
-
-                  {data.phone && (
-                    <div className="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-graphite/60 border border-cloud-border text-xs text-cloud-muted">
-                      <div className="flex items-center gap-2">
-                        <Phone className="w-3.5 h-3.5 text-sunshine" />
-                        <span>{data.phone}</span>
-                      </div>
-                      <span className="text-[10px] text-cloud-subtle uppercase">Phone</span>
-                    </div>
-                  )}
 
                   <div className="flex items-center justify-between px-3.5 py-2.5 rounded-lg bg-graphite/60 border border-cloud-border text-xs text-cloud-muted">
                     <div className="flex items-center gap-2 truncate">
